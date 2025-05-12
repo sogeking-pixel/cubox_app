@@ -1,27 +1,43 @@
 package com.example.intentodecubox.ui.screen.login.components
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 
 @Composable
-fun FormScreen(){
+fun FormScreen(
+    modifier: Modifier = Modifier
+){
     Column (
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
 
     ){
         Text(
             text = "Iniciar Sesion",
-            style = MaterialTheme.typography.headlineLarge
+            style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.primary
         )
         InputField(
-            value = "Correo electronico"
+            placeholder = "Correo electronico",
+            icon = Icons.Default.Email
         )
         InputField(
-            value = "Contraseña"
+            placeholder = "Contraseña",
+            icon = Icons.Default.Lock
         )
 
         Text(
@@ -41,15 +57,27 @@ fun FormScreen(){
 @Composable
 fun InputField(
     modifier: Modifier = Modifier,
-    value: String,
+    placeholder: String,
     onValueChange: (String) -> Unit = {},
-    label: @Composable () -> Unit = {}
+    label: @Composable () -> Unit = {},
+    icon:  ImageVector
 ){
     TextField(
-        modifier = modifier,
-        value = value,
+        value = "",
+        modifier = modifier.padding(vertical = 10.dp),
+        shape = RoundedCornerShape(40.dp),
+        placeholder = {
+            Text(text = placeholder)
+        },
         onValueChange = onValueChange,
-        label = label
+        leadingIcon = {
+            Icon(
+                imageVector = icon,
+                contentDescription = ""
+            )
+        },
+
+
     )
 }
 
