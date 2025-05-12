@@ -2,10 +2,12 @@ package com.example.intentodecubox.ui.screen.login
 import com.example.intentodecubox.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.intentodecubox.ui.screen.login.components.FormScreen
 import com.example.intentodecubox.ui.theme.IntentoDeCuboxTheme
@@ -15,7 +17,9 @@ fun LoginScreen(
     modifier: Modifier = Modifier,
     loginViewModel: LoginViewModel = viewModel(),
 ) {
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         ImageLogo()
         FormScreen()
 
@@ -40,6 +44,8 @@ fun ImageLogo(
 @Composable
 private fun LoginScreenPreview() {
     IntentoDeCuboxTheme {
-        LoginScreen()
+        LoginScreen(
+            modifier = Modifier.padding(10.dp)
+        )
     }
 }
